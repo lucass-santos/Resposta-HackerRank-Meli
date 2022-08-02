@@ -4,34 +4,23 @@ onde cada um seja menor ou igual a<maxDigit>, e a soma dos dígitos de cada núm
 Exemplo maxDigit=6: 3666, 4566...
 """
 
-def converte_texto_em_numero(texto):
+def cria_sequencia(max_digit):
+    multiplo = str(max_digit) * 4
+    lista2 = []
+    for x in range(1000, int(multiplo)):
+        soma = 0
+        for y in str(x):
+            if int(y) <= max_digit:
+                soma += int(y)
+        if soma == 21:
+            lista2.append(x)
 
-    try:
-        if type(int(texto)) == type(6) and len(texto) == 1:
-            if int(texto) >= 6:
-                numero = int(texto)
-                return numero
-            else:
-                raise Exception("Valor de entrada menor que dígito 6")
-        else:
-            raise Exception("Número com mais de uma unidade ou caractere diferente de nº")
-    except:
+    return lista2
 
-        print("Por favor digite apenas um número inteiro entre 6 à 9")
-        texto = input("Pode digitar o número: ")
-        numero = converte_texto_em_numero(texto)
-        return  numero
 
 max_digit = input("Digite um numero inteiro entre 6 à 9: ")
 
-max_digit = converte_texto_em_numero(max_digit)
+for x in cria_sequencia(int(max_digit)):
+  print(x)
 
-multiplo = str(max_digit) * 4
 
-for x in range(1000, int(multiplo)):
-    lista = [int(n) for n in str(x) if int(n) <= max_digit]
-    if sum(lista) == 21:
-        for h in lista:
-            print(h, end="")
-
-        print()
